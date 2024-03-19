@@ -1,33 +1,33 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/starRating.css">
     <div class="row">
-        <h1 class="text-center mb-3">Update Review</h1>
-            <div class="col-6 offset-3">
-                <form action="/campgrounds/<%= id %>/reviews/<%= review._id %>?_method=put" method="post" novalidate class="needs-validation">
-                    <div class="">
-                        <fieldset class="starability-growRotate">
-                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-                            
-                            <% for (let counter=1; counter <= 5; counter++ ) { %>
-                            <input type="radio" id="rate<%= counter %>" name="review[rating]" value="<%= counter %>" <% if (review.rating == counter) { %> checked <% } %>/>
-                            <label for="rate<%= counter %>"><%= counter %> star.</label>
-                            <% } %>
-                            
-                            <span class="starability-focus-ring"></span>
-                        </fieldset>
+        <h1 class="text-center mb-5">Update Review</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/campgrounds/<%= id %>/reviews/<%= review._id %>?_method=put" method="post" novalidate class="needs-validation">
+                <div class="d-flex text-center justify-content-center">
+                    <fieldset class="starability-growRotate">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                        
+                        <% for (let counter=1; counter <= 5; counter++ ) { %>
+                        <input type="radio" id="rate<%= counter %>" name="review[rating]" value="<%= counter %>" <% if (review.rating == counter) { %> checked <% } %>/>
+                        <label for="rate<%= counter %>"><%= counter %> star.</label>
+                        <% } %>
+                        
+                        <span class="starability-focus-ring"></span>
+                    </fieldset>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="body">Review</label>
+                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required><%= review.body %></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="body">Review</label>
-                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required><%= review.body %></textarea>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-success"type="submit">Update</button>
-                        <a class="btn btn-secondary" href="/campgrounds/<%= id %>">Cancel</a>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success"type="submit">Update</button>
+                    <a class="btn btn-secondary" href="/campgrounds/<%= id %>">Cancel</a>
+                </div>
+            </form>
+        </div>
         </h1>
     </div>
