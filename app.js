@@ -24,6 +24,7 @@ const campgroundsRoutes = require('./routes/campgrounds')
 const reviewsRoutes = require('./routes/reviews')
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp'
+const secret = process.env.SECRET
 
 mongoose.connect(dbUrl);
 
@@ -37,14 +38,14 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: process.env.SECRET
+        secret: secret
     }
 });
 
 const sessionConfig = {
     store,
     name: 'yelpCamp',
-    secret: process.env.SECRET,
+    secret: secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
