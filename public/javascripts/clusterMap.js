@@ -3,8 +3,8 @@
         container: 'cluster-map',
         // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
         style: 'mapbox://styles/mapbox/dark-v11',
-        center: [1.350288, 103.808387], //Singapore Center
-        zoom: 3
+        center: [103.808387, 1.350288], 
+        zoom: 10
     });
 
     map.addControl(new mapboxgl.NavigationControl())
